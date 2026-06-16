@@ -20,38 +20,28 @@
       transition: background 2s ease;
     }
 
-    /* ── Cards ── */
     .card {
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 16px;
       backdrop-filter: blur(10px);
-    }
-
-    /* ── Clock ── */
-    .clock-card {
-      padding: 28px 48px;
       text-align: center;
     }
 
-    .time-of-day-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent, #a78bfa);
-      margin-bottom: 6px;
-      opacity: 0.8;
-    }
+    .clock-card { padding: 28px 48px; }
+    .launcher-card { padding: 36px 48px; width: min(460px, 100%); }
 
-    .clock-label {
+    .time-of-day-label, .clock-label {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--accent, #a78bfa);
       margin-bottom: 10px;
+      opacity: 0.8;
     }
+
+    .time-of-day-label { margin-bottom: 6px; }
 
     .clock-time {
       font-size: 52px;
@@ -66,24 +56,15 @@
       margin-top: 8px;
     }
 
-    /* ── Launcher ── */
-    .launcher-card {
-      padding: 36px 48px;
-      text-align: center;
-      width: min(460px, 100%);
-    }
-
     .launcher-card h1 {
       font-size: 22px;
       font-weight: 700;
       margin-bottom: 28px;
-      letter-spacing: 0.5px;
     }
 
     .input-group {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
       margin-bottom: 16px;
     }
@@ -96,8 +77,7 @@
       min-width: 130px;
     }
 
-    .input-group input[type="text"],
-    .input-group input[type="number"] {
+    .input-group input {
       padding: 10px 12px;
       font-size: 15px;
       font-weight: 500;
@@ -111,7 +91,7 @@
     }
 
     .input-group input:focus { border-color: var(--accent, #a78bfa); }
-    input[type="number"] { max-width: 90px; text-align: center; flex: none !important; }
+    input[type="number"] { max-width: 90px !important; text-align: center; flex: none !important; }
 
     .btn-row {
       display: flex;
@@ -127,16 +107,15 @@
       cursor: pointer;
       border: none;
       border-radius: 8px;
-      transition: opacity 0.2s, transform 0.1s;
       color: #fff;
+      transition: opacity 0.2s, transform 0.1s;
     }
 
-    .btn:hover  { opacity: 0.88; }
+    .btn:hover { opacity: 0.88; }
     .btn:active { transform: scale(0.97); }
-    .btn-tabs    { background: #7c3aed; }
+    .btn-tabs { background: #7c3aed; }
     .btn-windows { background: #2563eb; }
 
-    /* ── Footer ── */
     .footer {
       font-size: 14px;
       font-weight: 600;
@@ -144,7 +123,6 @@
       letter-spacing: 1px;
     }
 
-    /* ── Settings toggle ── */
     .settings-toggle {
       position: fixed;
       top: 16px;
@@ -162,10 +140,10 @@
     }
     .settings-toggle:hover { background: rgba(255,255,255,0.2); }
 
-    /* ── Settings panel ── */
     .settings-panel {
       position: fixed;
-      top: 0; right: 0;
+      top: 0;
+      right: 0;
       width: min(320px, 100vw);
       height: 100vh;
       background: rgba(15, 12, 41, 0.97);
@@ -184,10 +162,9 @@
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 6px;
-      letter-spacing: 0.5px;
     }
 
-    .settings-panel p.subtitle {
+    .settings-panel p {
       font-size: 12px;
       color: rgba(255,255,255,0.4);
       margin-bottom: 24px;
@@ -195,7 +172,8 @@
 
     .settings-close {
       position: absolute;
-      top: 20px; right: 20px;
+      top: 20px;
+      right: 20px;
       background: none;
       border: none;
       color: rgba(255,255,255,0.5);
@@ -223,6 +201,12 @@
       align-items: center;
     }
 
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     input[type="color"] {
       width: 36px;
       height: 28px;
@@ -230,7 +214,6 @@
       border-radius: 6px;
       cursor: pointer;
       padding: 2px;
-      background: rgba(255,255,255,0.1);
     }
 
     .color-label {
@@ -238,12 +221,6 @@
       color: rgba(255,255,255,0.35);
       text-align: center;
       margin-top: 2px;
-    }
-
-    .color-swatch {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .section-title {
@@ -257,7 +234,6 @@
 
     .reset-btn {
       width: 100%;
-      margin-top: 24px;
       padding: 10px;
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.15);
@@ -267,20 +243,19 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
+      margin: 4px 0 8px;
     }
     .reset-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
   </style>
 </head>
 <body>
 
-  <!-- Settings toggle -->
   <button class="settings-toggle" onclick="toggleSettings()">Customize</button>
 
-  <!-- Settings panel -->
   <div class="settings-panel" id="settingsPanel">
     <button class="settings-close" onclick="toggleSettings()">✕</button>
     <h2>Customize Colors</h2>
-    <p class="subtitle">Pick start & end colors for each time of day.</p>
+    <p>Pick start & end colors for each time of day.</p>
 
     <div class="section-title">Right Now</div>
     <div class="setting-row">
@@ -300,7 +275,7 @@
         </div>
       </div>
     </div>
-    <button class="reset-btn" style="margin-top:4px; margin-bottom:8px;" onclick="clearOverride()">Clear Override</button>
+    <button class="reset-btn" onclick="clearOverride()">Clear Override</button>
 
     <div class="section-title">Button Colors</div>
     <div class="setting-row">
@@ -315,16 +290,14 @@
         <input type="color" id="btnWindowsColor" value="#2563eb" oninput="updateBtnColor('windows', this.value)">
       </div>
     </div>
-    <button class="reset-btn" style="margin-top:4px; margin-bottom:8px;" onclick="resetBtnColors()">Reset Button Colors</button>
+    <button class="reset-btn" onclick="resetBtnColors()">Reset Button Colors</button>
 
     <div class="section-title">Background by Time of Day</div>
-
     <div id="colorSettings"></div>
 
-    <button class="reset-btn" onclick="resetDefaults()">Reset to Defaults</button>
+    <button class="reset-btn" style="margin-top: 24px;" onclick="resetDefaults()">Reset to Defaults</button>
   </div>
 
-  <!-- Clock -->
   <div class="card clock-card">
     <div class="time-of-day-label" id="tod-label">Night</div>
     <div class="clock-label">Boston Time</div>
@@ -332,97 +305,46 @@
     <div class="clock-date" id="date">Loading…</div>
   </div>
 
-  <!-- Launcher -->
   <div class="card launcher-card">
     <h1>Automated Launcher</h1>
-
     <div class="input-group">
       <label for="url">Website URL:</label>
       <input type="text" id="url" value="google.com" placeholder="e.g. google.com">
     </div>
-
     <div class="input-group">
       <label for="count">How many to open:</label>
       <input type="number" id="count" value="5" min="1">
     </div>
-
     <div class="btn-row">
-      <button class="btn btn-tabs"    onclick="openTabs()">Open as Tabs</button>
-      <button class="btn btn-windows" onclick="openWindows()">Open as Windows</button>
+      <button class="btn btn-tabs" onclick="launch('tab')">Open as Tabs</button>
+      <button class="btn btn-windows" onclick="launch('window')">Open as Windows</button>
     </div>
   </div>
 
   <div class="footer">Made by Sovan</div>
 
   <script>
-    // ── Default themes ─────────────────────────────────────
     const DEFAULTS = [
-      { name: 'Night',     c1: '#0f0c29', c2: '#302b63', c3: '#24243e', accent: '#a78bfa' },
-      { name: 'Dawn',      c1: '#1a1a2e', c2: '#e96c4c', c3: '#f9a825', accent: '#f9a825' },
-      { name: 'Morning',   c1: '#1e90ff', c2: '#87ceeb', c3: '#fffde7', accent: '#87ceeb' },
-      { name: 'Midday',    c1: '#00b4d8', c2: '#90e0ef', c3: '#caf0f8', accent: '#00b4d8' },
+      { name: 'Night', c1: '#0f0c29', c2: '#302b63', c3: '#24243e', accent: '#a78bfa' },
+      { name: 'Dawn', c1: '#1a1a2e', c2: '#e96c4c', c3: '#f9a825', accent: '#f9a825' },
+      { name: 'Morning', c1: '#1e90ff', c2: '#87ceeb', c3: '#fffde7', accent: '#87ceeb' },
+      { name: 'Midday', c1: '#00b4d8', c2: '#90e0ef', c3: '#caf0f8', accent: '#00b4d8' },
       { name: 'Afternoon', c1: '#f77f00', c2: '#fcbf49', c3: '#eae2b7', accent: '#fcbf49' },
-      { name: 'Evening',   c1: '#3a0ca3', c2: '#f72585', c3: '#ff9e00', accent: '#f72585' },
-      { name: 'Dusk',      c1: '#240046', c2: '#7b2d8b', c3: '#ff6b6b', accent: '#ff6b6b' },
+      { name: 'Evening', c1: '#3a0ca3', c2: '#f72585', c3: '#ff9e00', accent: '#f72585' },
+      { name: 'Dusk', c1: '#240046', c2: '#7b2d8b', c3: '#ff6b6b', accent: '#ff6b6b' },
     ];
 
-    // Load saved or use defaults
     let themes = JSON.parse(localStorage.getItem('themes') || 'null') || JSON.parse(JSON.stringify(DEFAULTS));
+    let override = JSON.parse(localStorage.getItem('override') || 'null');
+    let btnColors = JSON.parse(localStorage.getItem('btnColors') || 'null') || { tabs: '#7c3aed', windows: '#2563eb' };
 
-    function saveThemes() {
-      localStorage.setItem('themes', JSON.stringify(themes));
-    }
+    const saveThemes = () => localStorage.setItem('themes', JSON.stringify(themes));
+    const saveBtnColors = () => localStorage.setItem('btnColors', JSON.stringify(btnColors));
 
-    function resetDefaults() {
-      themes = JSON.parse(JSON.stringify(DEFAULTS));
-      saveThemes();
-      buildColorSettings();
-      applyTheme(getCurrentEtHour());
-    }
-
-    // ── Build settings UI ──────────────────────────────────
-    function buildColorSettings() {
-      const container = document.getElementById('colorSettings');
-      container.innerHTML = '';
-      themes.forEach((t, i) => {
-        const row = document.createElement('div');
-        row.className = 'setting-row';
-        row.innerHTML = `
-          <span>${t.name}</span>
-          <div class="color-pair">
-            <div class="color-swatch">
-              <input type="color" value="${t.c1}" oninput="updateColor(${i},'c1',this.value)">
-              <div class="color-label">Start</div>
-            </div>
-            <div class="color-swatch">
-              <input type="color" value="${t.c2}" oninput="updateColor(${i},'c2',this.value)">
-              <div class="color-label">Mid</div>
-            </div>
-            <div class="color-swatch">
-              <input type="color" value="${t.c3}" oninput="updateColor(${i},'c3',this.value)">
-              <div class="color-label">End</div>
-            </div>
-          </div>
-        `;
-        container.appendChild(row);
-      });
-    }
-
-    function updateColor(i, key, val) {
-      themes[i][key] = val;
-      saveThemes();
-      applyTheme(getCurrentEtHour());
-    }
-
-    // ── Theme logic ────────────────────────────────────────
     function getThemeIndex(hour) {
-      if (hour < 5)  return 0;
-      if (hour < 7)  return 1;
-      if (hour < 10) return 2;
-      if (hour < 12) return 3;
-      if (hour < 17) return 4;
-      if (hour < 20) return 5;
-      return 6;
+      const times = [5, 7, 10, 12, 17, 20];
+      const idx = times.findIndex(t => hour < t);
+      return idx === -1 ? 6 : idx;
     }
 
     function getCurrentEtHour() {
@@ -434,57 +356,57 @@
     function applyTheme(hour) {
       const t = themes[getThemeIndex(hour)];
       if (!override) {
-        document.body.style.background =
-          `linear-gradient(135deg, ${t.c1}, ${t.c2}, ${t.c3})`;
+        document.body.style.background = `linear-gradient(135deg, ${t.c1}, ${t.c2}, ${t.c3})`;
       }
       document.documentElement.style.setProperty('--accent', t.accent);
       document.getElementById('tod-label').textContent = t.name;
     }
 
-    // ── Clock ──────────────────────────────────────────────
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', {
-        timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
-      });
-      document.getElementById('date').textContent = now.toLocaleDateString('en-US', {
-        timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-      });
+    function buildColorSettings() {
+      const container = document.getElementById('colorSettings');
+      container.innerHTML = themes.map((t, i) => `
+        <div class="setting-row">
+          <span>${t.name}</span>
+          <div class="color-pair">
+            ${['c1', 'c2', 'c3'].map(k => `
+              <div class="color-swatch">
+                <input type="color" value="${t[k]}" oninput="updateColor(${i},'${k}',this.value)">
+                <div class="color-label">${k === 'c1' ? 'Start' : k === 'c2' ? 'Mid' : 'End'}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateColor(i, key, val) {
+      themes[i][key] = val;
+      saveThemes();
       applyTheme(getCurrentEtHour());
     }
 
-    // ── Button colors ──────────────────────────────────────
-    const BTN_DEFAULTS = { tabs: '#7c3aed', windows: '#2563eb' };
-    let btnColors = JSON.parse(localStorage.getItem('btnColors') || 'null') || { ...BTN_DEFAULTS };
-
     function applyBtnColors() {
-      document.querySelector('.btn-tabs').style.background    = btnColors.tabs;
+      document.querySelector('.btn-tabs').style.background = btnColors.tabs;
       document.querySelector('.btn-windows').style.background = btnColors.windows;
-      document.getElementById('btnTabsColor').value    = btnColors.tabs;
+      document.getElementById('btnTabsColor').value = btnColors.tabs;
       document.getElementById('btnWindowsColor').value = btnColors.windows;
     }
 
     function updateBtnColor(which, val) {
       btnColors[which] = val;
-      localStorage.setItem('btnColors', JSON.stringify(btnColors));
+      saveBtnColors();
       applyBtnColors();
     }
 
     function resetBtnColors() {
-      btnColors = { ...BTN_DEFAULTS };
-      localStorage.setItem('btnColors', JSON.stringify(btnColors));
+      btnColors = { tabs: '#7c3aed', windows: '#2563eb' };
+      saveBtnColors();
       applyBtnColors();
     }
 
-
-    let override = JSON.parse(localStorage.getItem('override') || 'null');
-
     function syncOverridePickers() {
-      const t = themes[getThemeIndex(getCurrentEtHour())];
-      const src = override || t;
-      document.getElementById('overrideC1').value = src.c1;
-      document.getElementById('overrideC2').value = src.c2;
-      document.getElementById('overrideC3').value = src.c3;
+      const src = override || themes[getThemeIndex(getCurrentEtHour())];
+      ['c1', 'c2', 'c3'].forEach(k => document.getElementById(`override${k.toUpperCase()}`).value = src[k]);
     }
 
     function applyOverride() {
@@ -494,8 +416,7 @@
         c3: document.getElementById('overrideC3').value,
       };
       localStorage.setItem('override', JSON.stringify(override));
-      document.body.style.background =
-        `linear-gradient(135deg, ${override.c1}, ${override.c2}, ${override.c3})`;
+      document.body.style.background = `linear-gradient(135deg, ${override.c1}, ${override.c2}, ${override.c3})`;
     }
 
     function clearOverride() {
@@ -505,42 +426,46 @@
       syncOverridePickers();
     }
 
-    // ── Settings panel ─────────────────────────────────────
+    function resetDefaults() {
+      themes = JSON.parse(JSON.stringify(DEFAULTS));
+      saveThemes();
+      buildColorSettings();
+      applyTheme(getCurrentEtHour());
+    }
+
     function toggleSettings() {
       syncOverridePickers();
       document.getElementById('settingsPanel').classList.toggle('open');
     }
 
-    // ── Launcher ───────────────────────────────────────────
-    function getCount() {
-      const n = parseInt(document.getElementById('count').value);
-      return isNaN(n) || n < 1 ? 1 : n;
-    }
-
     function getUrl() {
-      let url = document.getElementById('url').value.trim();
-      if (!url) return 'https://google.com';
-      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-      return url;
+      let url = document.getElementById('url').value.trim() || 'https://google.com';
+      return /^https?:\/\//i.test(url) ? url : 'https://' + url;
     }
 
-    function openTabs() {
-      const count = getCount(), url = getUrl();
-      for (let i = 0; i < count; i++) window.open(url, '_blank');
+    function launch(type) {
+      const count = Math.max(1, parseInt(document.getElementById('count').value) || 1);
+      const url = getUrl();
+      for (let i = 0; i < count; i++) {
+        window.open(url, type === 'tab' ? '_blank' : '', type === 'window' ? 'width=800,height=600' : '');
+      }
     }
 
-    function openWindows() {
-      const count = getCount(), url = getUrl();
-      for (let i = 0; i < count; i++) window.open(url, '', 'width=800,height=600');
-    }
-
-    // ── Init ───────────────────────────────────────────────
     buildColorSettings();
-    updateClock();
     applyBtnColors();
+    const updateClock = () => {
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+      });
+      document.getElementById('date').textContent = now.toLocaleDateString('en-US', {
+        timeZone: 'America/New_York', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+      applyTheme(getCurrentEtHour());
+    };
+    updateClock();
     if (override) {
-      document.body.style.background =
-        `linear-gradient(135deg, ${override.c1}, ${override.c2}, ${override.c3})`;
+      document.body.style.background = `linear-gradient(135deg, ${override.c1}, ${override.c2}, ${override.c3})`;
     }
     setInterval(updateClock, 1000);
   </script>
